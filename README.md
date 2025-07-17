@@ -1,4 +1,4 @@
-# NLab Swift Code Generator - Paw Extension
+# NLab Code Generator - Paw Extension
 
 A Paw extension that generates Swift networking code compatible with [NLab](https://github.com/yasinkbas/NLab).
 
