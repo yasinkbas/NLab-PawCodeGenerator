@@ -7,7 +7,7 @@ A Paw extension that generates Swift networking code compatible with [NLab](http
 1. Clone or download this repository
 2. Run the build script to move folder into Paw extensions folder:
    ```bash
-   ./build
+   ./build.sh
    ```
 
 ## Usage
