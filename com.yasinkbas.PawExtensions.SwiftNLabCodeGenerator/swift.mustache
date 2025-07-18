@@ -1,0 +1,51 @@
+let client = NLClient(baseURL: "{{{url.base}}}")
+
+{{#body.has_json_body}}
+{{{body.json_body_object}}}
+
+{{/body.has_json_body}}
+{{#body.has_url_encoded_body}}
+let parameters: [String: String] = [
+{{#body.url_encoded_body}}
+    "{{name}}": "{{value}}"{{#.}},{{/.}}
+{{/body.url_encoded_body}}
+]
+
+{{/body.has_url_encoded_body}}
+NLTaskPoint(client: client)
+    .path("{{{url.path}}}")
+    .method(.{{method}})
+{{#headers.has_headers}}
+{{#headers.header_list}}
+    .addHeader(.init(name: "{{header_name}}", value: "{{header_value}}"))
+{{/headers.header_list}}
+{{/headers.has_headers}}
+{{#url.has_params}}
+{{#url.params}}
+    .addParameter(.init(name: "{{name}}", value: "{{value}}"))
+{{/url.params}}
+{{/url.has_params}}
+{{#body.has_url_encoded_body}}
+{{#body.url_encoded_body}}
+    .addParameter(.init(name: "{{name}}", value: "{{value}}"))
+{{/body.url_encoded_body}}
+{{/body.has_url_encoded_body}}
+{{#body.has_json_body}}
+    .setBody(body)
+{{/body.has_json_body}}
+{{#body.has_raw_body}}
+{{#body.has_short_body}}
+    .setBody("{{body.short_body}}")
+{{/body.has_short_body}}
+{{#body.has_long_body}}
+    .setBody(/* raw body content */)
+{{/body.has_long_body}}
+{{/body.has_raw_body}}
+{{#timeout}}
+    .timeout({{timeout}})
+{{/timeout}}
+{{#httpBasicAuth}}
+    .setBasicAuth(username: "{{httpBasicAuth.username}}", password: "{{httpBasicAuth.password}}")
+{{/httpBasicAuth}}
+    .build()
+    .direct() 

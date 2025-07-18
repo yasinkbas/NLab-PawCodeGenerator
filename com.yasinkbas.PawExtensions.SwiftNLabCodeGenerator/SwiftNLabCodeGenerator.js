@@ -55,7 +55,13 @@
           var _uri;
           _uri = URI(request.url);
           _uri.search("");
+          _uri.pathname("");
           return _uri;
+        })()),
+        "path": addslashes((function() {
+          var _uri;
+          _uri = URI(request.url);
+          return _uri.pathname();
         })()),
         "params": url_params,
         "has_params": url_params.length > 0
