@@ -212,7 +212,7 @@
       if (view.url.has_params && (method === 'GET' || method === 'HEAD' || method === 'DELETE')) {
         view["has_params_to_encode"] = true;
       }
-      template = readFile("swift.mustache");
+      template = readFile("nlab.mustache");
       return Mustache.render(template, view);
     };
   };
