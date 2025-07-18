@@ -2,6 +2,8 @@
 
 A Paw extension that generates Swift networking code compatible with [NLab](https://github.com/yasinkbas/NLab).
 
+![Paw Extension Screenshot](doc-src/paw.png)
+
 ## Installation
 
 1. Clone or download this repository
